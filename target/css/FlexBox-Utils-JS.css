@@ -1,3 +1,17 @@
-.flexbox-utils-js {
-  display: none;
+.flexbox-utils-js-demo-1 {
+  visibility: none;
+}
+.flexbox-utils-js-demo-1 .container-list {
+  width: 400px;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+.flexbox-utils-js-demo-1 .container-item {
+  border: solid 1px black;
+  display: inline-block;
+  width: 46%;
+  margin: 2%;
+  padding: 10px;
+  box-sizing: border-box;
+  float: left;
 }

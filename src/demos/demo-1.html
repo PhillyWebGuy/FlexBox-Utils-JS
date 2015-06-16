@@ -2,9 +2,65 @@
 <html>
 <head>
     <title>FlexBox-Utils-JS Demo 1</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/FlexBox-Utils-JS.js"></script>
+    <link href="css/FlexBox-Utils-JS.css" media="all" rel="stylesheet" />
 </head>
 
-<body>
+<body class="flexbox-utils-js-demo-1">
+
+<ul class="container-list">
+    <li class="container-item">
+        dolor lorum ipsum
+    </li>
+    <li class="container-item">
+        dolor lorum ipsum<br>
+        dolor lorum ipsum<br>
+    </li>
+    <li class="container-item">
+        dolor lorum ipsum<br>
+        dolor lorum ipsum<br>
+        dolor lorum ipsum<br>
+        dolor lorum ipsum<br>dolor lorum ipsum<br>dolor lorum ipsum<br>
+        dolor lorum ipsum<br>
+
+
+    </li>
+    <li class="container-item">
+        dolor lorum ipsum<br>dolor lorum ipsum<br>dolor lorum ipsum<br>dolor lorum ipsum<br>
+    </li>
+
+</ul>
+
+<script>
+    $(function(){
+
+        FlexBoxUtilsJS.init();
+
+        var boxes =  {
+            options : function () {
+                return {
+                    maxHeight: FlexBoxUtilsJS.responsiveBoxes.maxResultHeight(".container-item"),
+                    parent: ".container-list",
+                    children: ".container-item"
+                };
+            }
+        };
+
+        setTimeout(function(){
+            FlexBoxUtilsJS.responsiveBoxes.set(boxes.options());
+
+        });
+
+        $(window).resize(function(){
+            FlexBoxUtilsJS.responsiveBoxes.set(boxes.options());
+        });
+
+
+
+    });
+
+</script>
 
 </body>
 

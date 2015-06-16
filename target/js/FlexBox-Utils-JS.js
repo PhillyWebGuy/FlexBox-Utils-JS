@@ -8,14 +8,50 @@ Array.max = function(array){
     return Math.max.apply( Math, narray );
 };
 
-Post.edu.Utilities = {
+var FlexBoxUtilsJS = {
 
     init : function () {
-        Post.edu.Configuration.browser = this.browserDetect.browser();
-        Post.edu.Configuration.browserVersion = this.browserDetect.version();
+        this.browser = this.browserDetect.browser();
+        this.browserVersion = this.browserDetect.version();
     },
 
-    //FOR IE9, lacks FLEXBOX
+    responsiveBoxes : {
+
+        set : function(options) {
+
+            var height = options.maxHeight,
+                parent = options.parent,
+                children = options.children,
+                $results = $(parent).find(children);
+
+            if($(window).width() > parseInt(600, 10)) {
+                $results.css("height", height);
+            } else {
+                $results.css("height", "initial");
+            }
+        },
+        boxSizeAry : function (items) {
+            return this.getResultsHeights({
+                items: $(items)
+            });
+        },
+
+        maxResultHeight : function (items) {
+            return Array.max(this.boxSizeAry(items));
+        },
+
+        getResultsHeights : function(options) {
+            var ary = [],
+                items = options.items;
+
+            $(items).each(function(index, value){
+                $(value).height('auto');
+                ary.push($(value).outerHeight());
+            });
+            return ary;
+        }
+    },
+
     responsiveColumns : {
         set : function(options) {
 
@@ -32,7 +68,6 @@ Post.edu.Utilities = {
         }
     },
 
-    //FOR IE9, lacks FLEXBOX
     responsiveRow : {
 
         set : function(options) {
@@ -93,5 +128,7 @@ Post.edu.Utilities = {
     }
 };
 
-Post.edu.Utilities.init();
+
+
+
 
